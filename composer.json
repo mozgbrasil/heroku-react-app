@@ -1,0 +1,32 @@
+{
+    "name": "mozgbrasil/heroku-react-app",
+    "description": "Heroku React App",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "license": [
+        "proprietary"
+    ],
+    "type": "project",
+    "authors": [
+        {
+            "name": "Marcio dos Santos Amorim",
+            "email": "suporte@mozg.com.br",
+            "homepage": "http://mozg.com.br",
+            "role": "Developer"
+        }
+    ],
+    "repositories":[
+        {
+            "type":"composer",
+            "url":"https://packages.firegento.com"
+        }
+    ],
+    "require": {
+        "opis/closure": "^3.1"
+    },
+    "scripts": {
+  		"compile": [
+  			"npm run node-v"
+  		]
+  	}
+}

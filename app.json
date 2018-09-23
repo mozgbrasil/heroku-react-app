@@ -1,0 +1,44 @@
+{
+    "name":"@mozg/heroku-react-app",
+    "description":"Heroku React App",
+    "keywords":[
+        "app.json",
+        "react",
+        "heroku",
+        "mozg",
+        "brasil"
+    ],
+    "website":"http://mozg.com.br/",
+    "repository":"https://github.com/mozgbrasil/heroku-react-app",
+    "logo":"http://mozg.com.br/assets/images/logos/logo.svg",
+    "success_url":"/",
+    "scripts":{
+        "postdeploy":"echo 'Yo_postdeploy' ; bash app.sh postdeploy >> app.log ; ",
+        "pr-predestroy":"echo 'Yo_predestroy' ; bash app.sh teardown >> app.log ; "
+    },
+    "env":{
+        "EMAIL":{
+            "required":true
+        },
+        "SECRET_TOKEN":{
+            "description":"A secret key for verifying the integrity of signed cookies.",
+            "generator":"secret"
+        }
+    },
+    "addons": [
+      "heroku-postgresql:hobby-dev",
+      "mongolab:sandbox"
+    ],
+    "buildpacks": [
+      {
+        "url": "heroku/nodejs"
+      }
+    ],
+    "environments":{
+        "test":{
+            "scripts":{
+                "test":"echo 'Yo_environments' ; bash app.sh environments >> app.log ; "
+            }
+        }
+    }
+}
