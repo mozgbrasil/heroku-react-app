@@ -23,7 +23,8 @@ export function fetchIntelipostList(args = {}) {
       // doRequest is a placeholder Promise. You should replace it with your own logic.
       // See the real-word example at:  https://github.com/supnate/rekit/blob/master/src/features/home/redux/fetchIntelipostReactjsList.js
       // args.error here is only for test coverage purpose.
-      const doRequest = axios.get('http://www.reddit.com/r/reactjs.json');
+      const doRequest = axios.get('https://heroku-laravel-mozg.herokuapp.com/webservice/actions.php?printi=true');
+      //const doRequest = axios.get('http://www.reddit.com/r/reactjs.json');
 
       doRequest.then(
         res => {
@@ -57,6 +58,9 @@ export function dismissFetchIntelipostListError() {
 }
 
 export function reducer(state, action) {
+  console.info('=== fetchIntelipostList');
+  console.log('state',state);
+  console.log('action',action);
   switch (action.type) {
     case MURPHY_FETCH_INTELIPOST_LIST_BEGIN:
       // Just after a request is sent
@@ -68,9 +72,15 @@ export function reducer(state, action) {
 
     case MURPHY_FETCH_INTELIPOST_LIST_SUCCESS:
       // The request is success
+      console.info('=== ', action.type);
+      console.log('action',action);
+      console.log('action 2',action.data);
+      //console.log('action 3',action.data.content);
+      //console.log('action 4',action.data.content.delivery_options);
       return {
-        ...state,
-        intelipostList: action.data.data.children,
+        ...state,        
+        //intelipostList: action.data.data.children,
+        intelipostList: action.data.content.delivery_options,
 
         fetchIntelipostListPending: false,
         fetchIntelipostListError: null,

@@ -27,8 +27,8 @@ export class IntelipostListPage extends Component {
         {intelipostList.length > 0 ? (
           <ul className="murphy-intelipost-list">
             {intelipostList.map(item => (
-              <li key={item.data.id}>
-                <a href={item.data.url}>{item.data.title}</a>
+              <li key={item.delivery_method_id}>
+                {item.description}
               </li>
             ))}
           </ul>
